@@ -3,6 +3,7 @@ import "./css/layout.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Days from "./components/Days";
+import Day from "./components/Day";
 import InsertDay from "./components/InsertDay";
 import InsertVoca from "./components/InsertVoca";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Days />} />
           <Route path="/insert/day" element={<InsertDay />} />
           <Route path="/insert/voca" element={<InsertVoca />} />
+          <Route path="/day/:day" element={<Day />} />
         </Routes>
         <Footer />
       </div>

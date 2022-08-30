@@ -7,7 +7,7 @@ export default function Header() {
           <Link to="/">TODAY-VOCA</Link>
         </h1>
         <nav id="menu">
-          {/* <ul>
+          <ul>
             <li>
               <Link to="/insert/day" className="day">
                 ADD DAY
@@ -18,7 +18,7 @@ export default function Header() {
                 ADD VOCA
               </Link>
             </li>
-          </ul> */}
+          </ul>
         </nav>
       </header>
     </>
