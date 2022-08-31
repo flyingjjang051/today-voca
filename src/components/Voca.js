@@ -1,7 +1,8 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 export default function Voca(props) {
-  console.log(props);
+  const [info, setInfo] = useState(props);
+  console.log(info);
   const [isVisible, setIsVisible] = useState(true);
   const [isDone, setIsDone] = useState(props.isDone);
   //let isVisible = true;
@@ -9,7 +10,7 @@ export default function Voca(props) {
   const toggleKor = function () {
     setIsVisible(!isVisible);
   };
-  const toggleDone = function () {
+  const toggleDone = () => {
     //console.log("toggleDone");
 
     // axios.get()   read
@@ -34,6 +35,22 @@ export default function Voca(props) {
         }
       });
   };
+  const deleteVoca = () => {
+    if (window.confirm("다외웠나요?")) {
+      //console.log("delete");
+      axios.delete(`http://127.0.0.1:5000/voca/${props.id}`).then((res) => {
+        if (res.statusText === "OK") {
+          setInfo({ id: -1 });
+          //db에서 값을 지웠다는 결과를 받았기 때문에
+          // -1을 세팅하고
+          // 아래쪽에서 return false를 통해 화면에서 렌더링 안되게 만듦
+        }
+      });
+    }
+  };
+  if (info.id === -1) {
+    return null;
+  }
   return (
     <li className={isDone ? "done" : ""} data-idx={props.id}>
       <div className="check">
@@ -49,7 +66,9 @@ export default function Voca(props) {
         <button className="btn hidden" onClick={toggleKor}>
           HIDDEN
         </button>
-        <button className="btn del">DEL</button>
+        <button className="btn del" onClick={deleteVoca}>
+          DEL
+        </button>
       </div>
     </li>
   );
