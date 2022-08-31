@@ -146,6 +146,59 @@ li {
   border-radius: 100px;
 }
 
+.vocas {
+  display: flex;
+  flex-direction: column;
+}
+.vocas li {
+  background-color: #fff;
+  margin: 10px 0;
+  height: 50px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  color: #111;
+  position: relative;
+  transition: background 0.25s ease;
+}
+.vocas li.done {
+  background-color: #666;
+}
+.vocas li.done .word {
+  opacity: 0.5;
+}
+.vocas li.done .btns {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.vocas li .eng {
+  margin-left: 20px;
+}
+.vocas li .kor {
+  margin-left: 20px;
+}
+.vocas li .word {
+  transition: all 0.25s ease;
+}
+.vocas li .btns {
+  transition: all 0.25s ease;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-top: 0;
+}
+.vocas li .btns .btn {
+  padding: 10px 20px;
+  font-size: 14px;
+}
+.vocas li .btns .del {
+  margin-left: 10px;
+  background-color: rgb(218, 15, 15);
+}
+
 #footer {
   display: flex;
   justify-content: center;
