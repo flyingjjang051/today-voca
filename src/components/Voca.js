@@ -11,26 +11,13 @@ export default function Voca(props) {
     setIsVisible(!isVisible);
   };
   const toggleDone = () => {
-    //console.log("toggleDone");
-
-    // axios.get()   read
-    // axios.post()  create
-
-    // axios.put()  update
-    // axios.delete()  delete
-    //console.log(...props);
     axios
-      .put(`http://127.0.0.1:5000/voca/${props.id}`, {
-        // eng: props.eng,
-        // kor: props.kor,
-        // id: props.id,
-        // day: props.day,
-        ...props,
+      .put(`http://127.0.0.1:8099/voca/${props.id}`, {
         isDone: !isDone,
       })
       .then((res) => {
-        console.log(res);
-        if (res.statusText === "OK") {
+        if (res.data.update === "ok") {
+          console.log("바꼈다");
           setIsDone(!isDone);
         }
       });
@@ -38,13 +25,16 @@ export default function Voca(props) {
   const deleteVoca = () => {
     if (window.confirm("다외웠나요?")) {
       //console.log("delete");
-      axios.delete(`http://127.0.0.1:5000/voca/${props.id}`).then((res) => {
-        if (res.statusText === "OK") {
+      axios.delete(`http://127.0.0.1:8099/voca/${props.id}`).then((res) => {
+        if (res.data.delete === "ok") {
           setInfo({ id: -1 });
         }
       });
     }
   };
+  if (info.id === -1) {
+    return null;
+  }
   return (
     <li className={isDone ? "done" : ""} data-idx={props.id}>
       <div className="check">
