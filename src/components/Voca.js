@@ -41,16 +41,10 @@ export default function Voca(props) {
       axios.delete(`http://127.0.0.1:5000/voca/${props.id}`).then((res) => {
         if (res.statusText === "OK") {
           setInfo({ id: -1 });
-          //db에서 값을 지웠다는 결과를 받았기 때문에
-          // -1을 세팅하고
-          // 아래쪽에서 return false를 통해 화면에서 렌더링 안되게 만듦
         }
       });
     }
   };
-  if (info.id === -1) {
-    return null;
-  }
   return (
     <li className={isDone ? "done" : ""} data-idx={props.id}>
       <div className="check">

@@ -19,7 +19,7 @@ export default function InsertVoca() {
     console.log(kor.current.value);
     console.log(day.current.value);
     axios
-      .post(`http://127.0.0.1:5000/voca/`, {
+      .post(`http://127.0.0.1:8099/voca/add`, {
         day: parseInt(day.current.value),
         eng: eng.current.value,
         kor: kor.current.value,
@@ -29,13 +29,13 @@ export default function InsertVoca() {
         //console.log("입력되었습니다.");
         console.log(res);
         alert("단어가 입력되었습니다.");
-        if (res.statusText === "Created") {
+        if (res.data.insert === "ok") {
           navigate(`/day/${day.current.value}`);
         }
       });
   };
   useEffect(() => {
-    axios.get(`http://127.0.0.1:5000/days`).then((res) => {
+    axios.get(`http://127.0.0.1:8099/days`).then((res) => {
       console.log(res.data);
       setDays(res.data);
     });

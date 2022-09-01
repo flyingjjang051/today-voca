@@ -206,6 +206,13 @@ $blue: rgb(15, 103, 218);
   }
 }
 
+@media all and (max-width: 1200px) {
+  .container {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+
 // .vocas {
 //   display: flex;
 //   flex-direction: column;

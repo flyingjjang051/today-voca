@@ -5,14 +5,13 @@ export default function InsertDay() {
   const navigate = useNavigate();
   const [days, setDays] = useState([]); // useState(기본값)
   useEffect(() => {
-    axios.get("http://127.0.0.1:5000/days").then((res) => {
+    axios.get("http://127.0.0.1:8099/days").then((res) => {
       setDays(res.data);
     });
   }, []);
   const insertDay = () => {
-    axios.post("http://127.0.0.1:5000/days", { day: days.length + 1 }).then((res) => {
-      console.log(res);
-      if (res.statusText === "Created") {
+    axios.post("http://127.0.0.1:8099/day/add", { day: days.length + 1 }).then((res) => {
+      if (res.data.insert === "ok") {
         alert("day가 추가되었습니다.");
         navigate("/");
       }
