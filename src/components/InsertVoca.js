@@ -19,15 +19,13 @@ export default function InsertVoca() {
     console.log(kor.current.value);
     console.log(day.current.value);
     axios
-      .post(`http://127.0.0.1:8099/voca/add`, {
+      .post(`https://jjang051-voca.herokuapp.com/voca/add`, {
         day: parseInt(day.current.value),
         eng: eng.current.value,
         kor: kor.current.value,
         isDone: false,
       })
       .then((res) => {
-        //console.log("입력되었습니다.");
-        console.log(res);
         alert("단어가 입력되었습니다.");
         if (res.data.insert === "ok") {
           navigate(`/day/${day.current.value}`);
@@ -35,7 +33,7 @@ export default function InsertVoca() {
       });
   };
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8099/days`).then((res) => {
+    axios.get(`https://jjang051-voca.herokuapp.com/days`).then((res) => {
       console.log(res.data);
       setDays(res.data);
     });

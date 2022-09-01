@@ -12,7 +12,7 @@ export default function Voca(props) {
   };
   const toggleDone = () => {
     axios
-      .put(`http://127.0.0.1:8099/voca/${props.id}`, {
+      .put(`https://jjang051-voca.herokuapp.com/voca/${props.id}`, {
         isDone: !isDone,
       })
       .then((res) => {
@@ -25,7 +25,7 @@ export default function Voca(props) {
   const deleteVoca = () => {
     if (window.confirm("다외웠나요?")) {
       //console.log("delete");
-      axios.delete(`http://127.0.0.1:8099/voca/${props.id}`).then((res) => {
+      axios.delete(`https://jjang051-voca.herokuapp.com/voca/${props.id}`).then((res) => {
         if (res.data.delete === "ok") {
           setInfo({ id: -1 });
         }
